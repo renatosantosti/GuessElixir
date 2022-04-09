@@ -27,13 +27,13 @@ use Application
   end
 
   def guess(user_guess, picked_num, count) when user_guess > picked_num do
-    IO.gets('#{count} of 7. To high,  try again: ')
+    IO.gets('#{count} of 7. Too high,  try again: ')
     |> parse_input()
     |> guess(picked_num, count+1)
   end
 
   def guess(user_guess, picked_num, count) when user_guess < picked_num do
-    IO.gets('#{count} of 7. To lower,  try again: ')
+    IO.gets('#{count} of 7. Too lower,  try again: ')
     |> parse_input()
     |> guess(picked_num, count+1)
   end
@@ -49,8 +49,8 @@ use Application
   
   def show_score(guesses) do
     {_, msg} =  %{
-      1..1 => "You´re a powerfully lucker",
-      2..4 => "Well, you´re good!",
+      1..1 => "You're a powerfully lucker",
+      2..4 => "Well, you're good!",
       5..6 => "You should been better than that!"}
       |> Enum.find(fn {range, _} -> Enum.member?(range, guesses) end)
       IO.puts(msg)
