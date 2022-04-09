@@ -24,7 +24,6 @@ use Application
     |> parse_input()
     |> pickup_number()
     |> play()
-    |> IO.inspect()
   end
 
   def guess(user_guess, picked_num, count) when user_guess > picked_num do
@@ -41,6 +40,16 @@ use Application
 
   def guess(_user_guess, _picked_num, count) do
     IO.puts('You got it on #{count} attempts')
+    show_score(count)
+  end
+
+  def show_score(guesses) do
+    {_, msg} =  %{
+      1..1 => "You´re a powerfully lucker",
+      2..4 => "Well, you´re good!",
+      5..6 => "You should been better than that!"}
+      |> Enum.find(fn {range, _} -> Enum.member?(range, guesses) end)
+      IO.puts(msg)
   end
 
   def play(picked_num) do
