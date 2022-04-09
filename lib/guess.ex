@@ -43,6 +43,10 @@ use Application
     show_score(count)
   end
 
+  def show_score(guesses) when guesses > 7 do
+    IO.puts("Better luck next time!")
+  end
+  
   def show_score(guesses) do
     {_, msg} =  %{
       1..1 => "You´re a powerfully lucker",
