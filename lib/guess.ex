@@ -20,10 +20,14 @@ use Application
 
   def run() do
     IO.puts("Welcome Guess Number")
-    IO.gets("Choose level (1,2 or 3):")
+    IO.gets("Choose level (1, 2 or 3):")
     |> parse_input()
     |> pickup_number()
     |> play()
+  end
+
+  def guess(_user_guess, _picked_num, count) when count > 7 do
+    IO.puts('You failed, game finish!')
   end
 
   def guess(user_guess, picked_num, count) when user_guess > picked_num do
